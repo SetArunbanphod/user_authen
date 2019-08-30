@@ -79,7 +79,7 @@ function addNewUser(newUser) {
 function generateJWT(uid) {
     return new Promise((resolve, reject) => {
         try {
-            var token = jwt.sign({ uid: uid }, secret);
+            var token = jwt.sign({ uid: uid }, secret, { expiresIn: '30m' });
             resolve(token);
         } catch (error) {
             reject({ messageError: 'Gen JWT error!', error: error })
